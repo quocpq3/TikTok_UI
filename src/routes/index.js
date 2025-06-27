@@ -18,7 +18,7 @@ const publicRoutes = [
     {path: '/search', component: Search , layout: null},
 ]
 const privateRoutes =[
-
+    
 ]
 
 export {publicRoutes, privateRoutes}
