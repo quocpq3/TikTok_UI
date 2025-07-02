@@ -12,7 +12,6 @@ import styles from './Header.module.scss'
 import images  from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
-import { icon } from '@fortawesome/fontawesome-svg-core';
 
 const cx=classNames.bind(styles);
 
@@ -20,6 +19,27 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+          title: 'Language',
+          data: [
+            { 
+              type: 'language',
+              code: 'en',
+              title: 'English',
+            },
+            { 
+              type: 'language',
+              code: 'vi',
+              title: 'Tiếng Việt',
+            },
+            { 
+              type: 'language',
+              code: 'fr',
+              title: 'Françe',
+           
+            },
+          ],
+        }
     },
     {
       icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -41,6 +61,15 @@ function Header(){
         setSearchResult([]);
       },0);
     }, []);
+    //Handle logic
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+              // Handle language change logic here 
+              break;
+              default:
+        }
+    };
     return (
         <>
             <header className={cx('wrapper')}>
@@ -85,7 +114,7 @@ function Header(){
                         Log in
                     </Button>    
                    <Menu
-                      items={MENU_ITEMS}>
+                      items={MENU_ITEMS} onChange={handleMenuChange}>
                    <button className={cx('more-btn')}>
                         <FontAwesomeIcon icon={faEllipsisVertical} />
                      </button>
