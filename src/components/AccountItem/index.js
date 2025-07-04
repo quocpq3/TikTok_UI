@@ -1,25 +1,26 @@
 import classNames from "classnames/bind";
 import styles from './AccountItem.module.scss';
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";// Adjust the path as necessary
 import Images from '~/components/Images';
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({data}) {
   return (
-    <div className={cx('wrapper')}>
+    <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
         <Images 
-        fallBack ="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-1/476514354_1676042533001474_8240066952359594913_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=111&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeFOT0i1t17yU5pXMt7hUcbfuogoe7XaYf26iCh7tdph_X0hv7-hgGCWRRYkvy8b38v3E7unizerPKbNj41JQw24&_nc_ohc=o1ABSXMxtwEQ7kNvwEGxt9y&_nc_oc=AdmToqE6RRn3U6qlJgLdin9j33qCGAElVHhJARIVTzSk4qQLmbHJ2ngbWv19RlCvJio&_nc_zt=24&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=vmyKpUoH41Tvj6cbKFSXfg&oh=00_AfPHFQFS7438Z3L58ilBuJM9aY67-ypbKosBECokDkHl-g&oe=686C8ACE"
-        className={cx('avatar')} src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/482003380_1694815024457558_5229809777836645635_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEoqdTgmU6wSDwpH93yXx0lnAZfhEv_W7mcBl-ES_9buQItCHvR0jBxyjPI_cLAPzLH62EnnebQL-PVvNVV67tq&_nc_ohc=dIwjxJWQyY4Q7kNvwG3-_Nr&_nc_oc=AdnpwGqvahY5Tt8NmxO_9NamNNui8w6hLUOGUpB4VypvxyGkDJt7LlWwu99WAZP2Ix8&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=UVYQLkeUwPdbd5efRKcVew&oh=00_AfPiyjd0PRmHycOoHqoSKky4nXkuuOc9vGdcLDZWPzURnw&oe=686C8994" alt="Hoaaa" />
+        fallBack ="https://png.pngtree.com/png-clipart/20210311/original/pngtree-error-404-glitch-effect-png-image_6033747.jpg"
+        className={cx('avatar')} src={data.avatar} alt={data.avatar} />
         <div className={cx('info')}>
             <h4 className={cx('name')}>
-                <span>Nguyen Phu Quoc</span>
-                <FontAwesomeIcon className={cx('check')} icon={faCheckCircle}/>
+                <span>{data.full_name}</span>
+                {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle}/>}
             </h4>
-            <span className={cx('username')}>quocphh</span>
+            <span className={cx('username')}>{data.nickname}</span>
         </div>
-    </div>
+    </Link>
   ); 
 }
 export default AccountItem;
