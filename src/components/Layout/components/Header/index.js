@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faEllipsisVertical, faEarthAsia, faCircleQuestion, faKeyboard, faUser, faCoins,  faGear, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-
+import { Link } from 'react-router-dom';
+import routesConfig from '~/config/routes'
 
 import Button from '~/components/Button';
 import styles from './Header.module.scss'
@@ -100,7 +101,7 @@ function Header(){
             <header className={cx('wrapper')}>
                 <div className={cx('inner')}>
                   <div className={cx('logo')}>
-                    <img className={cx('logo_img')} src={images.logo} alt="TikTok" />
+                   <Link to={routesConfig.home}> <img className={cx('logo_img')} src={images.logo} alt="TikTok" /></Link>
                   </div>
 
                   <Search/>
@@ -136,8 +137,7 @@ function Header(){
                      
                   </>
                   )}  
-                  <Menu
-                        items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                  <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                           <Images 
                             src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/482003380_1694815024457558_5229809777836645635_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEoqdTgmU6wSDwpH93yXx0lnAZfhEv_W7mcBl-ES_9buQItCHvR0jBxyjPI_cLAPzLH62EnnebQL-PVvNVV67tq&_nc_ohc=dIwjxJWQyY4Q7kNvwG3-_Nr&_nc_oc=AdnpwGqvahY5Tt8NmxO_9NamNNui8w6hLUOGUpB4VypvxyGkDJt7LlWwu99WAZP2Ix8&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=UVYQLkeUwPdbd5efRKcVew&oh=00_AfPiyjd0PRmHycOoHqoSKky4nXkuuOc9vGdcLDZWPzURnw&oe=686C8994"
