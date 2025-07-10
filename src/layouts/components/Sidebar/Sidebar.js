@@ -5,6 +5,7 @@ import config from '~/config'
 import Menu, {MenuItem} from './Menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faHome, faHomeUser, faUser, faUserGroup, faVideoCamera } from '@fortawesome/free-solid-svg-icons';
+import SuggestedAccount from '../../../components/SuggestedAccounts/SuggestedAccounts';
 
 const cx = classNames.bind(styles);
 
@@ -34,6 +35,8 @@ function Sidebar(){
                 activeIcon={<FontAwesomeIcon className={cx('active-icon')} icon={faCamera}/>}
                 />
             </Menu>
+            <SuggestedAccount label="Suggested accounts"/>
+            <SuggestedAccount label="Following accounts"/>
         </aside>
     );
 }
