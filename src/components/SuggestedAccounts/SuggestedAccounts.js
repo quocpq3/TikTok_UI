@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import styles from './SuggestedAccounts.scss'
+import styles from './SuggestedAccounts.module.scss'
 import PropTypes from 'prop-types'
 import AccountItem from "./AccountItem";
 
@@ -11,6 +11,9 @@ function SuggestedAccount ({label}) {
             <p className={cx('label')}>{label}</p>
 
 
+            <AccountItem/>
+            <AccountItem/>
+            <AccountItem/>
             <AccountItem/>
             <AccountItem/>
             <AccountItem/>

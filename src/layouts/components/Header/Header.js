@@ -69,7 +69,7 @@ function Header(){
         }
     };
 
-    const currentUser = false;// Replace with actual user authentication logic
+    const currentUser = true;
 
     const userMenu =[ 
     {
