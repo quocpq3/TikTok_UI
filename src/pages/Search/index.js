@@ -1,6 +1,6 @@
 
 
-function Search(){
+const Search = function(){
     return <h2>Search page</h2>
 }
 

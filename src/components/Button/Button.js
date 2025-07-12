@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
-function Button({
+const Button = function ({
     to,
     href,
     primary=false,

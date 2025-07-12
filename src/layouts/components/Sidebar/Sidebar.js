@@ -8,7 +8,7 @@ import SuggestedAccount from '../../../components/SuggestedAccounts/SuggestedAcc
 
 const cx = classNames.bind(styles);
 
-function Sidebar(){
+const Sidebar = function(){
     return (
         <aside className={cx('wrapper')}>
             <Menu>

@@ -1,6 +1,6 @@
 
 
-function Upload(){
+const Upload = function(){
     return <h2> Upload page</h2>
 }
 

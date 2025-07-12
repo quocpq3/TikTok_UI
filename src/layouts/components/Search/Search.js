@@ -11,7 +11,7 @@ import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss'
 
 const cx=classNames.bind(styles);
-function Search (){
+const Search = function(){
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);

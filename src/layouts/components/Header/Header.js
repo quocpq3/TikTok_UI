@@ -15,7 +15,7 @@ import Menu from '~/components/Popper/Menu';
 import { ActivityIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import Images from '~/components/Images';
 import Search from '../Search';
-import routes from '../../../config/routes';
+// import routes from '../../../config/routes';
 
 const cx=classNames.bind(styles);
 
@@ -56,7 +56,7 @@ const MENU_ITEMS = [
     },
     
 ];
-function Header(){ 
+const Header = function(){ 
   
     
     //Handle logic

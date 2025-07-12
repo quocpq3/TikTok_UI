@@ -1,6 +1,6 @@
 
 
-function Live() {
+const Live = function() {
     return(
         <h2>Live</h2>
     )

@@ -2,7 +2,7 @@
 import './GlobalStyles.scss';
 import PropTypes from 'prop-types'
 
-function GlobalStyles({children}){
+const GlobalStyles = function({children}){
     return children
 }
 

@@ -8,7 +8,7 @@ import Images from '~/components/Images';
 
 const cx = classNames.bind(styles);
 
-function AccountItem({ data }) {
+const AccountItem = function({ data }) {
   return (
     <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
         <Images 

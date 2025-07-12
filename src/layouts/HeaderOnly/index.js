@@ -1,7 +1,7 @@
 import Header from "~/layouts/components/Header";
 
 
-function HeaderOnly({children}){
+const HeaderOnly = function({children}){
     return(
         <div>
             <Header/>

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 const cx=classNames.bind(styles);
 
-function Header({title, onBack}) {
+const Header = function({title, onBack}) {
 
     return (
        <header className={cx('header')}>

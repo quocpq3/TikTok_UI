@@ -13,7 +13,7 @@ const cx=classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({children, items = []},hideOnClick=false, onChange = defaultFn) {
+const Menu= function({children, items = []},hideOnClick=false, onChange = defaultFn) {
 
     const [history, setHistory] = useState([{ data: items }]);
 

@@ -1,6 +1,6 @@
 
 
-function Following(){
+const Following = function(){
     return <h2>Following page</h2>
 }
 
