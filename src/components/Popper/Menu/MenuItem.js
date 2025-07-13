@@ -1,22 +1,21 @@
 import Button from '~/components/Button';
-import classNames from 'classnames/bind';
-import styles from './Menu.module.scss';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
+function MenuItem({ onClick, data }) {
+    const classes = `w-full justify-start rounded-none font-semibold py-[11px] px-4 leading-[1.8rem] hover:bg-hover-bg ${
+        data.separate ? 'py-[10px] px-4 border-t border-border-light' : ''
+    }`;
 
-const cx = classNames.bind(styles);
-
-function MenuItem({onClick, data }) {
-    const classes = cx('menu-item',{
-        separate: data.separate
-    })
     return (
-        <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>{data.title}</Button>
+        <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>
+            {data.title}
+        </Button>
     );
 }
 
 MenuItem.propTypes = {
     data: PropTypes.object.isRequired,
     onClick: PropTypes.func,
-}
+};
+
 export default MenuItem;
