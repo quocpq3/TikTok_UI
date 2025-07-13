@@ -1,27 +1,33 @@
-
-import classNames from 'classnames/bind';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import styles from './Menu.module.scss'
 
-const cx = classNames.bind(styles)
-
-function MenuItem({title, to ,icon,activeIcon}) {
+function MenuItem({ title, to, icon, activeIcon }) {
     // nav.isActive được dùng trong NavLink
     return (
-        <NavLink className={(nav) => cx('menu-item', {active: nav.isActive})} to={to}> 
-            <span className={cx('icon')}>{icon}</span>
-            <span className={cx('active-icon')}>{activeIcon}</span>
-            <span className={cx('title')}>{title}</span>
+        <NavLink
+            className={({ isActive }) =>
+                `flex items-center p-2 text-lg font-bold rounded transition-colors duration-200 ease-in-out hover:bg-hover-bg ${
+                    isActive ? 'text-primary' : ''
+                }`
+            }
+            to={to}
+        >
+            {({ isActive }) => (
+                <>
+                    <span className={`flex ${isActive ? 'hidden' : ''}`}>{icon}</span>
+                    <span className={`flex ${isActive ? '' : 'hidden'}`}>{activeIcon}</span>
+                    <span className="ml-[15px]">{title}</span>
+                </>
+            )}
         </NavLink>
-    )
-
+    );
 }
-
 
 MenuItem.propTypes = {
     title: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     icon: PropTypes.node.isRequired,
-}
+    activeIcon: PropTypes.node.isRequired,
+};
+
 export default MenuItem;
