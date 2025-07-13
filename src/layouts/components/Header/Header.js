@@ -133,8 +133,7 @@ const Header = function(){
                       </Button>
                       <Button primary>
                           Log in
-                      </Button>    
-                     
+                      </Button>   
                   </>
                   )}  
                   <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
