@@ -24,6 +24,9 @@ module.exports = {
                 'header-height': '60px',
                 'search-height': '46px',
             },
+            inset: {
+                'search-btn': '52px',
+            },
             spacing: {
                 'layout-spacer': '24px',
                 'search-spacer': '9px',
