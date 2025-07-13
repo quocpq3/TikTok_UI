@@ -62,7 +62,8 @@ const Search = function () {
                 )}
                 onClickOutside={handleHideResult}
             >
-                <div className="relative h-search-height bg-bg-search rounded-search pl-4 flex items-center border border-transparent focus-within:border-border-search after:content-[''] after:absolute after:top-search-spacer after:h-[calc(var(--search-height)-var(--search-top-spacer)*2)] after:right-search-btn after:w-px after:bg-border-light">
+                <div className="relative h-search-height bg-bg-search rounded-search pl-4 flex items-center border border-transparent focus-within:border-border-search">
+                    <div className="absolute top-search-spacer h-[28px] right-search-btn w-px bg-border-light"></div>
                     <input
                         ref={inputRef}
                         value={searchValue}
@@ -79,7 +80,7 @@ const Search = function () {
                     />
                     {!!searchValue && !loading && (
                         <button
-                            className="absolute right-[calc(var(--search-button-width)+16px)] top-1/2 transform -translate-y-1/2 text-secondary-text"
+                            className="absolute right-[68px] top-1/2 transform -translate-y-1/2 text-secondary-text"
                             onClick={handleClear}
                         >
                             <FontAwesomeIcon icon={faCircleXmark} />
@@ -87,7 +88,7 @@ const Search = function () {
                     )}
                     {loading && (
                         <FontAwesomeIcon
-                            className="absolute right-[calc(var(--search-button-width)+16px)] top-1/2 transform -translate-y-1/2 text-secondary-text animate-spin"
+                            className="absolute right-[68px] top-1/2 transform -translate-y-1/2 text-secondary-text animate-spin"
                             icon={faSpinner}
                         />
                     )}
