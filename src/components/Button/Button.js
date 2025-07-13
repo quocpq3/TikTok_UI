@@ -1,10 +1,9 @@
 
-import classNames from "classnames/bind";
-import styles from './Button.module.scss';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import clsx from 'clsx'; 
 
-const cx = classNames.bind(styles);
+
 
 const Button = function ({
     to,
@@ -46,24 +45,32 @@ const Button = function ({
         props.href = href;
         Comp = 'a'; // nếu có href thì sẽ là a
     }
-  
-
-    const classes = cx('wrapper', {
-        [className]: className,
-        primary,
-        outline,
-        small,
-        large,
-        text,
-        disabled,
-        rounded,
-    })
-
+      const classesclsx = clsx(
+        'inline-flex align-center justify-center  min-w-[100px] py-3 px-6 rounded-lg fs-2xl font-family font-semibold cursor-pointer bg-neutral-50 border border-solid border-transparent select-none space-x-2',
+        disabled && 'pointer-events-none opacity-50',
+        primary &&'text-neutral-50 bg-[var(--primary)] border-[var] hover:border-current hover:bg-[var(--hoverPrimary)]',
+        outline &&'',
+        small &&'',
+        large &&'',
+        text &&' bg-transparent hover:underline',
+        rounded && ''
+    );
+    // const classes = cx('wrapper', {
+    //     [className]: className,
+    //     primary,
+    //     outline,
+    //     small,
+    //     large,
+    //     text,
+    //     disabled,
+    //     rounded,
+    // })
     return (
-     <Comp className={classes} {...props}>
-        {leftIcon && <span className={cx('icon')}>{leftIcon}</span> }
-        <span className={cx('title')}>{children}</span>
-        {rightIcon && <span className={cx('icon')}>{rightIcon}</span> }
+        
+     <Comp className={classesclsx} {...props}>
+        {leftIcon && <span className='inline-block'>{leftIcon}</span> }
+        <span>{children}</span>
+        {rightIcon && <span className='inline-block'>{rightIcon}</span> }
        
      </Comp>
     );

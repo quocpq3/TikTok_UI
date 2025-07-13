@@ -69,7 +69,7 @@ const Header = function(){
         }
     };
 
-    const currentUser = true;
+    const currentUser = false;
 
     const userMenu =[ 
     {
@@ -140,7 +140,7 @@ const Header = function(){
                   <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                           <Images 
-                            src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/482003380_1694815024457558_5229809777836645635_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEoqdTgmU6wSDwpH93yXx0lnAZfhEv_W7mcBl-ES_9buQItCHvR0jBxyjPI_cLAPzLH62EnnebQL-PVvNVV67tq&_nc_ohc=dIwjxJWQyY4Q7kNvwG3-_Nr&_nc_oc=AdnpwGqvahY5Tt8NmxO_9NamNNui8w6hLUOGUpB4VypvxyGkDJt7LlWwu99WAZP2Ix8&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=UVYQLkeUwPdbd5efRKcVew&oh=00_AfPiyjd0PRmHycOoHqoSKky4nXkuuOc9vGdcLDZWPzURnw&oe=686C8994"
+                            src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/476514354_1676042533001474_8240066952359594913_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFOT0i1t17yU5pXMt7hUcbfuogoe7XaYf26iCh7tdph_X0hv7-hgGCWRRYkvy8b38v3E7unizerPKbNj41JQw24&_nc_ohc=LOT0lJXoj6UQ7kNvwEY1Mcs&_nc_oc=AdnOmeVHG1H-tmRwafWV01_l9GQtsXPwfSto7Xl_f7qb1A5dcy42uMskQzbzzUIt5wg&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=g9VrwNZUp4g1rwgEF5VL_g&oh=00_AfQjMtiTrTcTzjU-4WUB7GArThBrATw-DmJwvOr6Gy3UYg&oe=68786950"
                             className={cx('user-avatar')} 
                             width={100} 
                             alt='Nguyen Phu Quoc' 
