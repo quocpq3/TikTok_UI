@@ -4,24 +4,21 @@ import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-s
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
 import HeadlessTippy from '@tippyjs/react/headless';
-import classNames from 'classnames/bind';
 
-import * as searchServices from '~/services/searchServices'
+import * as searchServices from '~/services/searchServices';
 import AccountItem from '~/components/AccountItem';
-import styles from './Search.module.scss'
 
-const cx=classNames.bind(styles);
-const Search = function(){
+const Search = function () {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
-    
+
     const debounced = useDebounce(searchValue, 500);
-    
-    const inputRef = useRef()
+
+    const inputRef = useRef();
     useEffect(() => {
-        if(!debounced){
+        if (!debounced) {
             setSearchResult([]);
 
             return;
@@ -35,71 +32,76 @@ const Search = function(){
             setLoading(false);
         };
         fetchApi();
-}, [debounced]);
-    
+    }, [debounced]);
+
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
         inputRef.current.focus();
-    }
+    };
 
     const handleHideResult = () => {
-        setShowResult(false)
-    }
+        setShowResult(false);
+    };
 
     return (
         <div>
-            <HeadlessTippy 
-                        appendTo={()=> document.body}
-                        interactive
-                        visible={showResult && searchResult.length > 0}
-                        render={attrs => (                
-                              <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                                <PopperWrapper>
-                                  <h4 className={cx('search-title')}>
-                                    Accounts
-                                  </h4>
-                                  {searchResult.map((result)=>(
-                                    <AccountItem key={result.id} data={result}/>
-                                  ))}
-                                  
-                                </PopperWrapper>
-                              </div>
-                         )}
-                         onClickOutside={handleHideResult}
-                     >
-                      <div className={cx('search')}>
-                        <input 
-                            ref={inputRef}
-                            value={searchValue}
-                            type="text" 
-                            placeholder='Search accounts and videos' 
-                            spellCheck={false} 
-                            onChange={(e) => {
-                                const value = e.target.value;
-                               if(value.startsWith(' ')) return;
-                                setSearchValue(value);    
-                            }}
-                            onFocus={()=> setShowResult(true)}
-                            />
-                        {!!searchValue && !loading &&( 
-                        <button 
-                            className={cx('clear')} 
-                            
+            <HeadlessTippy
+                appendTo={() => document.body}
+                interactive
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className="w-search-width" tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className="py-[5px] px-3 text-secondary-text text-sm font-semibold">Accounts</h4>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
+                )}
+                onClickOutside={handleHideResult}
+            >
+                <div className="relative h-search-height bg-bg-search rounded-search pl-4 flex items-center border border-transparent focus-within:border-border-search after:content-[''] after:absolute after:top-search-spacer after:h-[calc(var(--search-height)-var(--search-top-spacer)*2)] after:right-search-btn after:w-px after:bg-border-light">
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        type="text"
+                        placeholder="Search accounts and videos"
+                        spellCheck={false}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            if (value.startsWith(' ')) return;
+                            setSearchValue(value);
+                        }}
+                        onFocus={() => setShowResult(true)}
+                        className="text-base text-black bg-transparent h-full flex-1 pr-10 caret-primary font-proxima"
+                    />
+                    {!!searchValue && !loading && (
+                        <button
+                            className="absolute right-[calc(var(--search-button-width)+16px)] top-1/2 transform -translate-y-1/2 text-secondary-text"
                             onClick={handleClear}
-                        >       
+                        >
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
-                        )}
-                            {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}/>}
-                 
-                          <button className={cx('search-btn')} onMouseDown={(e)=>e.preventDefault()}>
-                              <FontAwesomeIcon icon={faMagnifyingGlass} />
-                          </button>
-                      </div>
-                      </HeadlessTippy>
-        </div>
-    )
-}
+                    )}
+                    {loading && (
+                        <FontAwesomeIcon
+                            className="absolute right-[calc(var(--search-button-width)+16px)] top-1/2 transform -translate-y-1/2 text-secondary-text animate-spin"
+                            icon={faSpinner}
+                        />
+                    )}
 
-export default Search
+                    <button
+                        className="w-search-btn h-full rounded-r-search cursor-pointer text-xl text-secondary-text hover:bg-hover-bg focus-within:text-[rgba(22,24,35,0.75)]"
+                        onMouseDown={(e) => e.preventDefault()}
+                    >
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
+    );
+};
+
+export default Search;
